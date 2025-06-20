@@ -1,0 +1,23 @@
+{
+  "name": "krioh-assistentes-backend",
+  "version": "1.0.0",
+  "description": "Backend da plataforma white-label de assistentes de IA para clientes da Krioh.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "firebase-admin": "^11.10.1",
+    "openai": "^4.30.0",
+    "stripe": "^12.19.0",
+    "dotenv": "^16.4.5",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
