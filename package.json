@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "cd krioh-assistentes/backend && npm install && npm start"
+    "start": "node krioh-assistentes/backend/src/app.js"
   }
 } 
