@@ -1,9 +1,9 @@
 const { db } = require('../services/firebase');
-const { Configuration, OpenAIApi } = require('openai');
+const OpenAI = require('openai');
 
-const openai = new OpenAIApi(new Configuration({
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
-}));
+});
 
 // Envia prompt para IA, consome crédito e retorna resposta
 async function askIA(req, res) {
@@ -24,14 +24,14 @@ async function askIA(req, res) {
       return res.status(402).json({ message: 'Créditos insuficientes.' });
     }
     // Chama OpenAI
-    const response = await openai.createChatCompletion({
+    const response = await openai.chat.completions.create({
       model: 'gpt-4',
       messages: [
         { role: 'system', content: 'Você é um assistente de marketing que escreve com o tom da marca.' },
         { role: 'user', content: prompt }
       ]
     });
-    const respostaIA = response.data.choices[0].message.content;
+    const respostaIA = response.choices[0].message.content;
     // Consome 1 crédito
     await usersRef.doc(userDoc.id).update({ creditos: user.creditos - 1 });
     // Salva histórico
